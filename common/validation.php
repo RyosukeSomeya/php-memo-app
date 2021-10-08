@@ -33,7 +33,7 @@ function stringMinSizeCheck(&$errors, $check_value, $message, $min_size = 8) {
  * @param int $max_size
  */
 function stringMaxSizeCheck(&$errors, $check_value, $message, $max_size = 255) {
-    if (mb_strlen($check_value) < $max_size) {
+    if (mb_strlen($check_value) > $max_size) {
         array_push($errors, $message);
     }
 }
@@ -69,7 +69,7 @@ function halfAlphanumericCheck(&$errors, $check_value, $message) {
  * @param $check_value
  * @param $message
  */
-function mailAddressDuplicationChack(&$errors, $check_value, $message) {
+function mailAddressDuplicationCheck(&$errors, $check_value, $message) {
     $database_handler = getDatabaseConnection();
     if ($statement = $database_handler->prepare('SELECT id FROM users WHERE email = :user_email')) {
         $statement->bindParam(':user_email', $check_value);

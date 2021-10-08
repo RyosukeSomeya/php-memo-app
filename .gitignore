@@ -1,2 +1,4 @@
 .docker_memo/mysql/data/
 .docker_memo/mysql/log/
+.docker_memo/php/log/
+
